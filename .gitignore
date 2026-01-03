@@ -1,14 +1,19 @@
+# Ambiente virtual
 .venv/
+venv/
+
+# Python
 __pycache__/
 *.pyc
-.env
-# Terraform
-infra/terraform/.terraform/
-infra/terraform/terraform.tfstate
-infra/terraform/terraform.tfstate.backup
 
-# Terraform (local only)
-infra/terraform/.terraform/
-infra/terraform/.terraform.lock.hcl
-infra/terraform/terraform.tfstate
-infra/terraform/terraform.tfstate.backup
+# Streamlit
+.streamlit/
+
+# Terraform
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+
+# SO / editor
+.DS_Store
+.vscode/
