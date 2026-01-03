@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  api:
+    container_name: nfe_api
+    build:
+      context: .
+      dockerfile: infra/docker/Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "${API_PORT}:8000"
+    command: >
+      uv run uvicorn app.main:app
+      --host 0.0.0.0
+      --port 8000
+      --reload
+    volumes:
+      - .:/app
+    restart: unless-stopped
+
+  streamlit:
+    container_name: nfe_streamlit
+    build:
+      context: .
+      dockerfile: infra/docker/Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "${STREAMLIT_PORT}:8501"
+    command: >
+      uv run streamlit run app/presentation/streamlit/app.py
+      --server.address 0.0.0.0
+      --server.port 8501
+    volumes:
+      - .:/app
+    depends_on:
+      - api
+    restart: unless-stopped
