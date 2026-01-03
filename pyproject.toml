@@ -1,0 +1,20 @@
+[project]
+name = "nfe-simulada-api"
+version = "0.1.0"
+description = "API de Nota Fiscal simulada com FastAPI, Clean Architecture, Docker e Gitflow"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115",
+  "uvicorn[standard]>=0.32",
+  "sqlalchemy>=2.0",
+  "psycopg2-binary>=2.9",
+  "pydantic>=2.10",
+  "python-dotenv>=1.0"
+]
+
+[tool.uv]
+dev-dependencies = [
+  "pytest",
+  "pytest-asyncio",
+  "httpx"
+]
